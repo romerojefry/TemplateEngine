@@ -2,8 +2,20 @@
 
 class Employee {
     construstor (name, id, email){
-        this.name = name,
-        this.id = id, 
-        this.email = email,
+        this.name = name;
+        this.id = id;
+        this.email = email;
+    }
+
+    getName(){
+        return this.name;
+    }
+    getid(){
+        return this.id;
+    }
+    getEmail(){
+        return this.email 
     }
 }
+module.exports = Employee;
+console.log("employee")
