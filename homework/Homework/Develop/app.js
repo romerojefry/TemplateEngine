@@ -55,7 +55,9 @@ const questions = [
         type: "list",
         name: "role",
         choices: [
-            "Engineer"
+            "Engineer",
+            "Manger",
+            "Intern"
         ]
     }
 ];
@@ -70,7 +72,7 @@ let employee = "";
 
 async function userData() {
     try{
-        await inquirer.prompt(starterQuestion).then(function(response) {
+        await inquirer.prompt(questions).then(function(response) {
             return employeeData = response;
         });
         switch (employeeData.role){
@@ -81,6 +83,33 @@ async function userData() {
                 employee = new Engineer(employeeData.name, employeeData.id, employeeData.email, employeeData.github);
 
                 break;
-        }
-    }
-}
+        };
+
+        employeeArray.push(employee);
+        console.log("empolyee added");
+
+        await inquirer.prompt(employee).then(function (response) {
+                        return decision = response.addEmployee;
+                    });
+            
+                    if (decision === "Yes") {
+                        await userData();
+                    } else {
+                        console.log(employeeArray);
+            
+                        let employees = render(employeeArray);
+            
+                        fs.writeFile(outputPath, employees, function (err) {
+                            if (err) {
+                                console.log(err);
+                            }
+                            console.log("Data entered!");
+                        })
+                    }
+            
+                } catch (err) {
+                    console.log(err);
+                }
+            }
+            
+            userData();
