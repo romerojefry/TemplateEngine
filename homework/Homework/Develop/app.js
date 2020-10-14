@@ -59,3 +59,28 @@ const questions = [
         ]
     }
 ];
+const EngineerQ = {
+    type: "input",
+    name: "githubUsername",
+    message: "what is your github?"
+};
+
+const employeeArray = []
+let employee = "";
+
+async function userData() {
+    try{
+        await inquirer.prompt(starterQuestion).then(function(response) {
+            return employeeData = response;
+        });
+        switch (employeeData.role){
+            case "Engineeer":
+                await inquirer.prompt(EngineerQ).then(function (response) {
+                    employeeData.github = response.githubUsername;
+                });
+                employee = new Engineer(employeeData.name, employeeData.id, employeeData.email, employeeData.github);
+
+                break;
+        }
+    }
+}
