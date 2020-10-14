@@ -34,6 +34,8 @@ const render = require("./lib/htmlRenderer");
 // object with the correct structure and methods. This structure will be crucial in order
 // for the provided `render` function to work! ```
 
+
+// adding my prompt questions
 const questions = [
     {
         type: "input",
@@ -70,6 +72,7 @@ const EngineerQ = {
 const employeeArray = []
 let employee = "";
 
+//using async function 
 async function userData() {
     try{
         await inquirer.prompt(questions).then(function(response) {
@@ -99,6 +102,7 @@ async function userData() {
             
                         let employees = render(employeeArray);
             
+            //pushing the promts answers to the new genrated html
                         fs.writeFile(outputPath, employees, function (err) {
                             if (err) {
                                 console.log(err);
