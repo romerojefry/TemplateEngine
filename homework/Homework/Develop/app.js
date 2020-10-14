@@ -50,5 +50,12 @@ const questions = [
         type: "input",
         name: "email",
         message: "what is you're email?"
+    },
+    {
+        type: "list",
+        name: "role",
+        choices: [
+            "Engineer"
+        ]
     }
 ];
